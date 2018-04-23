@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         studentList=new ArrayList<>();
         //session.setLogin(false);
        if(session.isLoggedIn()){
-            Intent intent = new Intent(LoginActivity.this, Profile_Student.class);
+            Intent intent = new Intent(LoginActivity.this, Student_Dashboard.class);
             startActivity(intent);
             finish();
         }
@@ -147,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
                         db.addUser(name,fullname,username,address,mobile_no,joiningId,profilePic_Url,school,emailid,DOB);
 
                         Intent intent = new Intent(LoginActivity.this,
-                                Profile_Student.class);
+                                Student_Dashboard.class);
                         startActivity(intent);
                         finish();
                     }else{

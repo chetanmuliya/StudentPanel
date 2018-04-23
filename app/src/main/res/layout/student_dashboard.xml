@@ -3,37 +3,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/backgroundstudent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="200dp"
-       android:alpha="10"
-       android:background="@drawable/studentpanelsecond">
+       android:alpha="1">
 
-       <de.hdodenhof.circleimageview.CircleImageView
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_above="@+id/homeprofilePic"
+           android:layout_alignParentStart="true"
+           android:layout_marginBottom="8dp"
+           android:gravity="center"
+           android:textSize="22sp"
+           android:text="d  o  m  a  i  n  E"
+           android:textColor="@android:color/black"
+           android:textStyle="bold" />
+
+
+       <com.example.chetanmuliya.studentpanel.libraryClass.CircularNetworkImageView
            android:id="@+id/homeprofilePic"
            android:layout_width="100dp"
            android:layout_height="100dp"
-           android:layout_alignEnd="@+id/textView2"
-           android:layout_alignParentBottom="true"
-           android:layout_marginBottom="44dp"
-           android:layout_marginEnd="6dp"
+           android:layout_centerHorizontal="true"
+           android:layout_centerVertical="true"
            android:src="@drawable/default_profile_picture"
-           app:civ_border_color="@color/white"
+           app:civ_border_color="@android:color/black"
            app:civ_border_width="2dp" />
-
-       <TextView
+       <ImageView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_alignParentBottom="true"
-           android:layout_alignParentEnd="true"
-           android:layout_marginEnd="16dp"
-           android:layout_marginBottom="5dp"
+           android:layout_alignBottom="@+id/homeprofilePic"
+           android:layout_alignEnd="@+id/homeprofilePic"
+           android:layout_marginBottom="10dp"
+           android:src="@drawable/ic_circle" />
+
+       <TextView
+           android:id="@+id/studentDashboardName"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/homeprofilePic"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="11dp"
            android:text="Chetan Muliya"
-           android:textColor="@color/white"
+           android:textColor="@android:color/black"
            android:textSize="18sp"
-           android:textStyle="bold"
-           android:id="@+id/textView2" />
+           android:textStyle="bold" />
    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,8 +65,9 @@
                 android:id="@+id/attendanceLogo"
                 android:layout_width="110dp"
                 android:padding="20dp"
+                android:onClick="getAttendance"
                 android:layout_centerInParent="true"
-                android:layout_height="120dp"
+                android:layout_height="100dp"
                 android:src="@drawable/ic_placeholderh"/>
             <TextView
                 android:layout_width="match_parent"
@@ -77,7 +96,8 @@
                 android:layout_centerInParent="true"
                 android:layout_width="150dp"
                 android:padding="20dp"
-                android:layout_height="120dp"
+                android:onClick="oncoursesEnrolled"
+                android:layout_height="100dp"
                 android:src="@drawable/ic_enrolledcourse"/>
             <TextView
                 android:id="@+id/courseEnrolledTextview"
@@ -105,13 +125,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5">
+
             <ImageView
                 android:id="@+id/annoucementLogo"
                 android:layout_width="110dp"
-                android:layout_centerInParent="true"
-                android:layout_height="120dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:onClick="getAnnouncements"
                 android:padding="20dp"
-                android:src="@drawable/ic_announcement"/>
+                android:src="@drawable/ic_announcement" />
             <TextView
                 android:layout_width="match_parent"
                 android:id="@+id/annoucementTextview"
@@ -139,7 +162,8 @@
                 android:layout_centerInParent="true"
                 android:layout_width="150dp"
                 android:padding="20dp"
-                android:layout_height="120dp"
+                android:onClick="getTestSchedule"
+                android:layout_height="100dp"
                 android:src="@drawable/ic_testschedule"/>
             <TextView
                 android:id="@+id/testscheduleTextview"
@@ -157,6 +181,70 @@
                 android:text="test timetable"
                 android:layout_below="@id/testscheduleTextview"
                 android:gravity="center"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+            <ImageView
+                android:id="@+id/testReport"
+                android:layout_width="110dp"
+                android:layout_centerInParent="true"
+                android:onClick="getTestReport"
+                android:layout_height="100dp"
+                android:padding="20dp"
+                android:src="@drawable/ic_testreport"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/testReportTV"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="Report Card"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_below="@id/testReport"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="test report"
+                android:layout_below="@id/testReportTV"
+                android:gravity="center"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+            <ImageView
+                android:id="@+id/studentProfile"
+                android:layout_centerInParent="true"
+                android:layout_width="150dp"
+                android:onClick="getStudentProfile"
+                android:padding="20dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_profile"/>
+            <TextView
+                android:id="@+id/studentProfileTV"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="Profile"
+                android:layout_below="@id/studentProfile" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="student profile"
+                android:layout_below="@id/studentProfileTV"
+                android:gravity="center" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

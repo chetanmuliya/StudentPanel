@@ -43,14 +43,11 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
     class MyViewHolder extends RecyclerView.ViewHolder{
 
         private TextView courseNameTv;
-        private Button attendence,report;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             courseNameTv=(TextView)itemView.findViewById(R.id.course_name);
-            attendence=(Button)itemView.findViewById(R.id.attendence);
-            report=(Button)itemView.findViewById(R.id.report);
         }
     }
 }

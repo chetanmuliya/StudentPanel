@@ -23,6 +23,7 @@ public class CoursesDetails extends AppCompatActivity {
 
     RecyclerView recyclerView;
     CourseAdapter adapter;
+    String status;
     SessionManager session;
     String[] courseName;
     @Override
@@ -36,7 +37,7 @@ public class CoursesDetails extends AppCompatActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
 
         }
-
+        status = getIntent().getStringExtra("status");
         session=new SessionManager(getApplicationContext());
         int size=session.getSize();
         courseName=new String[size];
@@ -53,7 +54,7 @@ public class CoursesDetails extends AppCompatActivity {
         Log.d("*****", "onCreate: courseName"+courseName[0]);
 
 
-        adapter = new CourseAdapter(courseName);
+        adapter = new CourseAdapter(courseName,status);
         recyclerView=(RecyclerView)findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

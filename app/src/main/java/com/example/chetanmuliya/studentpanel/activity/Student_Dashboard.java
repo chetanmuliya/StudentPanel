@@ -48,10 +48,14 @@ public class Student_Dashboard extends AppCompatActivity {
     }
 
     public void getAttendance(View view) {
+        Intent intent=new Intent(Student_Dashboard.this,CoursesDetails.class);
+        intent.putExtra("status","attendance");
+        startActivity(intent);
     }
 
     public void oncoursesEnrolled(View view) {
         Intent intent=new Intent(Student_Dashboard.this,CoursesDetails.class);
+        intent.putExtra("status","course");
         startActivity(intent);
     }
 

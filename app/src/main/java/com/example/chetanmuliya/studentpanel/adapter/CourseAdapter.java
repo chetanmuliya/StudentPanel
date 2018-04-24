@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.chetanmuliya.studentpanel.R;
 
@@ -18,13 +19,14 @@ import java.util.Set;
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHolder> {
 
     String[] courseName;
-    public CourseAdapter(String[] courseName) {
+    String status;
+    public CourseAdapter(String[] courseName,String status) {
         this.courseName=courseName;
+        this.status=status;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         LayoutInflater inflater=LayoutInflater.from(parent.getContext());
         View row=inflater.inflate(R.layout.course_layout_row_design,parent,false);
         return new MyViewHolder(row);
@@ -34,6 +36,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         holder.courseNameTv.setText(courseName[position]);
+        if(status.equals("attendance")) {
+            holder.courseNameTv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
     }
 
     @Override

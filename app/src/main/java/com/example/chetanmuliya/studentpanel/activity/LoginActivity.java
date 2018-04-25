@@ -117,28 +117,36 @@ public class LoginActivity extends AppCompatActivity {
                          String DOB=jObj.getString("DOB");
                              JSONArray course = jObj.getJSONArray("course");
                         String[] studentCourse=new String[course.length()];
+                        String[] studentBatch=new String[course.length()];
                         session.setSize(course.length());
                        // Set<String> courseSet=new HashSet<>();
                         Map<String,String> courseMap=new HashMap<>();
                              for(int i=0;i<course.length();i++){
                                  JSONObject aObject=course.getJSONObject(i);
                                  String course1=aObject.optString("course").toString();
+                                 String batch=aObject.optString("batch").toString();
                                  studentCourse[i]=course1;
-                                 //courseSet.add(course1);
+                                 studentBatch[i]=batch;
                                  Log.d(TAG, "onResponse: course "+course1);
+                                 Log.d(TAG, "onResponse: course "+batch);
                              }
 
                         if(course.length()>0) {
                             courseMap.put("course1",studentCourse[0]);
+                            courseMap.put("batch1",studentBatch[0]);
                         }
                         if(course.length()>1) {
                             courseMap.put("course2", studentCourse[1]);
+                            courseMap.put("batch2", studentBatch[1]);
                         }
                         if(course.length()>2) {
                             courseMap.put("course3", studentCourse[2]);
+                            courseMap.put("batch3", studentBatch[2]);
                         }
-                        if(course.length()>3)
-                        courseMap.put("course4", studentCourse[3]);
+                        if(course.length()>3) {
+                            courseMap.put("course4", studentCourse[3]);
+                            courseMap.put("batch4", studentBatch[3]);
+                        }
 
                         Log.d(TAG, "onResponse: studentCourse[i] "+courseMap.toString());
                         session.setStudentCourses(courseMap);

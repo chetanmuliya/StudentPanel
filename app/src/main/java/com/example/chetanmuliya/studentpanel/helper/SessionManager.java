@@ -44,6 +44,10 @@ public class SessionManager {
             editor.putString("course2",courses.get("course2"));
             editor.putString("course3",courses.get("course3"));
             editor.putString("course4",courses.get("course4"));
+            editor.putString("batch1",courses.get("batch1"));
+            editor.putString("batch2",courses.get("batch2"));
+            editor.putString("batch3",courses.get("batch3"));
+            editor.putString("batch4",courses.get("batch4"));
             editor.commit();
             Log.d(TAG, "courses session modified ");
         }

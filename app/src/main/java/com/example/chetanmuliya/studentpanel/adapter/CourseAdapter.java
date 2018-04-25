@@ -1,6 +1,8 @@
 package com.example.chetanmuliya.studentpanel.adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.chetanmuliya.studentpanel.R;
+import com.example.chetanmuliya.studentpanel.activity.AttendanceActivity;
 
 import java.util.Set;
 
@@ -19,10 +22,12 @@ import java.util.Set;
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHolder> {
 
     String[] courseName;
+    String[] batch;
     String status;
-    public CourseAdapter(String[] courseName,String status) {
+    public CourseAdapter(String[] courseName,String status,String[] batch) {
         this.courseName=courseName;
         this.status=status;
+        this.batch=batch;
     }
 
     @Override
@@ -33,14 +38,17 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         holder.courseNameTv.setText(courseName[position]);
         if(status.equals("attendance")) {
             holder.courseNameTv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent=new Intent(v.getContext(),AttendanceActivity.class);
+                    intent.putExtra("courseBatch",batch[position]);
+                    Log.d("***", "onClick: "+batch[position]);
+                    v.getContext().startActivity(intent);
                 }
             });
         }

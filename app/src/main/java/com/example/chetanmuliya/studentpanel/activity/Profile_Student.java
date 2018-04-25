@@ -56,7 +56,7 @@ public class Profile_Student extends AppCompatActivity {
         db=new SQLiteLoginHandler(getApplicationContext());
         session=new SessionManager(getApplicationContext());
 
-        List<Student> studentList=db.getStudentdetails();
+            List<Student> studentList=db.getStudentdetails();
 
         //imageloder
         ImageLoader imageLoader= AppController.getInstance().getImageLoader();

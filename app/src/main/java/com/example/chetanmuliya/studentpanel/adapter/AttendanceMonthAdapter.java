@@ -1,5 +1,6 @@
 package com.example.chetanmuliya.studentpanel.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +22,11 @@ public class AttendanceMonthAdapter extends RecyclerView.Adapter<AttendanceMonth
 
     List<AttendanceMonth> attendanceMonthList;
     AttendanceMonth attendanceMonthData;
+    Context ctx;
 
-    public AttendanceMonthAdapter(List<AttendanceMonth> attendanceMonthList) {
+    public AttendanceMonthAdapter(List<AttendanceMonth> attendanceMonthList, Context c) {
         this.attendanceMonthList = attendanceMonthList;
+        this.ctx=c;
     }
 
     @Override

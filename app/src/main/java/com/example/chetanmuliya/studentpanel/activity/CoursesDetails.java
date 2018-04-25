@@ -26,6 +26,7 @@ public class CoursesDetails extends AppCompatActivity {
     String status;
     SessionManager session;
     String[] courseName;
+    String[] batch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,26 +36,38 @@ public class CoursesDetails extends AppCompatActivity {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
-
         }
-        status = getIntent().getStringExtra("status");
+        if(getIntent()!=null) {
+            status = getIntent().getStringExtra("status");
+            if(status.equals("attendance")){
+                toolbar.setTitle("Attendance");
+            }else{
+                toolbar.setTitle("Courses");
+            }
+        }
         session=new SessionManager(getApplicationContext());
         int size=session.getSize();
         courseName=new String[size];
+        batch=new String[size];
 
-        if(courseName.length>=1)
+        if(courseName.length>=1){
         courseName[0]=session.getStudentCourses("course1");
-        if(courseName.length>2)
+        batch[0]=session.getStudentCourses("batch1");}
+        if(courseName.length>2){
         courseName[1]=session.getStudentCourses("course2");
+        batch[1]=session.getStudentCourses("batch2");}
         if(courseName.length>3) {
+            batch[2] = session.getStudentCourses("batch3");
             courseName[2] = session.getStudentCourses("course3");
             courseName[3] = session.getStudentCourses("course4");
+            batch[3] = session.getStudentCourses("batch4");
         }
 
         Log.d("*****", "onCreate: courseName"+courseName[0]);
+        Log.e("*****", "onCreate: batch"+batch[1]);
 
 
-        adapter = new CourseAdapter(courseName,status);
+        adapter = new CourseAdapter(courseName,status,batch);
         recyclerView=(RecyclerView)findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

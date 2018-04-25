@@ -197,20 +197,5 @@
         android:text="Full Name: Roshan Chandra Singh"
         android:gravity="center"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="537dp"
-        android:background="@drawable/profile_background"
-        android:gravity="center_vertical|center_horizontal"
-        android:padding="1dp"
-        android:elevation="15dp"
-        android:clickable="true"
-        android:onClick="onCourses"
-        android:text="c o u r s e s"
-        android:textSize="10sp"
-        android:textColor="@color/white" />
 
 </RelativeLayout>

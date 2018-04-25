@@ -25,7 +25,8 @@
             android:name=".activity.CoursesDetails"
             android:parentActivityName=".activity.Profile_Student" />
         <activity android:name=".activity.Student_Dashboard"></activity>
-        <activity android:name=".activity.AttendanceActivity"></activity>
+        <activity
+            android:name=".activity.AttendanceActivity"></activity>
     </application>
 
 </manifest>

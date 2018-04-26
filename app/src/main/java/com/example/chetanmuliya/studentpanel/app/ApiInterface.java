@@ -1,6 +1,7 @@
 package com.example.chetanmuliya.studentpanel.app;
 
 import com.example.chetanmuliya.studentpanel.model.AttendanceMonth;
+import com.example.chetanmuliya.studentpanel.model.DetailAttendanceData;
 
 import java.util.List;
 
@@ -18,4 +19,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("attendance_record.php")
     Call<List<AttendanceMonth>> getAttendanceMonth(@Field("batch") String batch, @Field("username") String username);
+
+    @FormUrlEncoded
+    @POST("detail_attendance_record.php")
+    Call<List<DetailAttendanceData>> getDetailAttendanceMonth(@Field("batch") String batch, @Field("username") String username,  @Field("my") String my);
 }

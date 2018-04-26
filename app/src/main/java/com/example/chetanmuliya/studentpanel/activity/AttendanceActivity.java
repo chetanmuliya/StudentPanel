@@ -1,6 +1,7 @@
 package com.example.chetanmuliya.studentpanel.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,12 +11,14 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.chetanmuliya.studentpanel.R;
 import com.example.chetanmuliya.studentpanel.adapter.AttendanceMonthAdapter;
 import com.example.chetanmuliya.studentpanel.app.ApiClient;
 import com.example.chetanmuliya.studentpanel.app.ApiInterface;
+import com.example.chetanmuliya.studentpanel.helper.CustomOnCLickListener;
 import com.example.chetanmuliya.studentpanel.helper.CustomProgressDialog;
 import com.example.chetanmuliya.studentpanel.helper.SQLiteLoginHandler;
 import com.example.chetanmuliya.studentpanel.model.AttendanceMonth;
@@ -32,9 +35,10 @@ import retrofit2.Response;
 public class AttendanceActivity extends AppCompatActivity {
 
      public CustomProgressDialog customProgressDialog;
+     private CustomOnCLickListener customOnCLickListener;
     Context ctx;
     RecyclerView attendanceRVList;
-    String username,batch;
+    String username,batch,my;
     SQLiteLoginHandler db;
     List<AttendanceMonth> attendanceMonthList;
     private AttendanceMonthAdapter adapter;
@@ -51,10 +55,10 @@ public class AttendanceActivity extends AppCompatActivity {
         db=new SQLiteLoginHandler(getApplicationContext());
         List<Student> studentList=db.getStudentdetails();
         if(getIntent()!=null){
-            username=studentList.get(0).getUsername();
             batch=getIntent().getExtras().getString("courseBatch");
             Log.e("****", "batch: "+batch );
         }
+        username=studentList.get(0).getUsername();
         //progress dialog
         customProgressDialog=new CustomProgressDialog(this);
         customProgressDialog.showProgressDialog();
@@ -76,7 +80,16 @@ public class AttendanceActivity extends AppCompatActivity {
            public void onResponse(Call<List<AttendanceMonth>> call, Response<List<AttendanceMonth>> response) {
                customProgressDialog.hideProgressDialog();
                attendanceMonthList = response.body();
-               adapter = new AttendanceMonthAdapter(attendanceMonthList,ctx);
+               adapter = new AttendanceMonthAdapter(attendanceMonthList, ctx, new CustomOnCLickListener() {
+                   @Override
+                   public void onCLick(View v, int position) {
+                       Intent intent=new Intent(v.getContext(),DetailAttendanceActivity.class);
+                       intent.putExtra("my",attendanceMonthList.get(position).getMonth());
+                       intent.putExtra("username",username);
+                       intent.putExtra("batch",batch);
+                       startActivity(intent);
+                   }
+               });
                attendanceRVList.setAdapter(adapter);
                Log.e("****", "onResponse: "+new Gson().toJson(response));
            }

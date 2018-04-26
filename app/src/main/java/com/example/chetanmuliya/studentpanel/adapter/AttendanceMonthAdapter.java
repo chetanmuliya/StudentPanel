@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.chetanmuliya.studentpanel.R;
+import com.example.chetanmuliya.studentpanel.helper.CustomOnCLickListener;
 import com.example.chetanmuliya.studentpanel.model.AttendanceMonth;
 
 import java.util.List;
@@ -23,10 +24,12 @@ public class AttendanceMonthAdapter extends RecyclerView.Adapter<AttendanceMonth
     List<AttendanceMonth> attendanceMonthList;
     AttendanceMonth attendanceMonthData;
     Context ctx;
+    CustomOnCLickListener customOnCLickListener;
 
-    public AttendanceMonthAdapter(List<AttendanceMonth> attendanceMonthList, Context c) {
+    public AttendanceMonthAdapter(List<AttendanceMonth> attendanceMonthList, Context c,CustomOnCLickListener customOnCLickListener) {
         this.attendanceMonthList = attendanceMonthList;
         this.ctx=c;
+        this.customOnCLickListener = customOnCLickListener;
     }
 
     @Override
@@ -38,10 +41,16 @@ public class AttendanceMonthAdapter extends RecyclerView.Adapter<AttendanceMonth
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
        attendanceMonthData = attendanceMonthList.get(position);
        holder.month.setText(attendanceMonthData.getMonth());
        holder.attendance_count.setText(String.valueOf(attendanceMonthData.getAttendenceCount()));
+       holder.detailAttendance.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               customOnCLickListener.onCLick(v,position);
+           }
+       });
     }
 
     @Override
@@ -59,7 +68,7 @@ public class AttendanceMonthAdapter extends RecyclerView.Adapter<AttendanceMonth
 
             month = (TextView)itemView.findViewById(R.id.attendanceMonth);
             attendance_count = (TextView)itemView.findViewById(R.id.attendanceCount);
-            detailAttendance = (Button)itemView.findViewById(R.id.detailAttendance);
+            detailAttendance = (Button)itemView.findViewById(R.id.detailAttendanceBtn);
         }
     }
 }

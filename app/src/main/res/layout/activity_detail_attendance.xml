@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendarview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        app:mcv_showOtherDates="all"></com.prolificinteractive.materialcalendarview.MaterialCalendarView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:layout_marginTop="10dp"
+        android:padding="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@drawable/profile_background"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textSize="12sp"
+            android:paddingLeft="10dp"
+            android:textColor="@android:color/black"
+            android:gravity="center_vertical"
+            android:layout_weight="8"
+            android:text="Session Attendented"/>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -54,20 +54,22 @@
            android:textStyle="bold" />
    </RelativeLayout>
     <LinearLayout
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="10">
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_weight="5">
             <ImageView
                 android:id="@+id/attendanceLogo"
-                android:layout_width="110dp"
-                android:padding="20dp"
+                android:layout_width="60dp"
+                android:scaleType="fitXY"
                 android:onClick="getAttendance"
-                android:layout_centerInParent="true"
-                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_height="60dp"
                 android:src="@drawable/ic_placeholderh"/>
             <TextView
                 android:layout_width="match_parent"
@@ -86,18 +88,20 @@
                 android:text="attendance report"
                 android:layout_below="@id/attendanceTextview"
                 android:gravity="center"/>
-        </RelativeLayout>
-        <RelativeLayout
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_weight="5">
             <ImageView
                 android:id="@+id/enrolledCoursesLogo"
                 android:layout_centerInParent="true"
-                android:layout_width="150dp"
-                android:padding="20dp"
+                android:layout_width="60dp"
+                android:scaleType="fitXY"
+                android:layout_gravity="center"
                 android:onClick="oncoursesEnrolled"
-                android:layout_height="100dp"
+                android:layout_height="60dp"
                 android:src="@drawable/ic_enrolledcourse"/>
             <TextView
                 android:id="@+id/courseEnrolledTextview"
@@ -115,25 +119,25 @@
                 android:text="all courses"
                 android:layout_below="@id/courseEnrolledTextview"
                 android:gravity="center"/>
-        </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="10">
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="0dp"
+            android:orientation="vertical"
             android:layout_height="wrap_content"
             android:layout_weight="5">
-
             <ImageView
                 android:id="@+id/annoucementLogo"
-                android:layout_width="110dp"
-                android:layout_height="100dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
+                android:layout_width="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="60dp"
+                android:scaleType="fitXY"
+                android:layout_gravity="center"
                 android:onClick="getAnnouncements"
-                android:padding="20dp"
                 android:src="@drawable/ic_announcement" />
             <TextView
                 android:layout_width="match_parent"
@@ -152,18 +156,20 @@
                 android:text="notice"
                 android:layout_below="@id/annoucementTextview"
                 android:gravity="center"/>
-        </RelativeLayout>
-        <RelativeLayout
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
+            android:orientation="vertical"
             android:layout_height="wrap_content"
             android:layout_weight="5">
             <ImageView
                 android:id="@+id/testscheduleLogo"
-                android:layout_centerInParent="true"
-                android:layout_width="150dp"
-                android:padding="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="60dp"
+                android:scaleType="fitXY"
+                android:layout_gravity="center"
                 android:onClick="getTestSchedule"
-                android:layout_height="100dp"
+                android:layout_height="60dp"
                 android:src="@drawable/ic_testschedule"/>
             <TextView
                 android:id="@+id/testscheduleTextview"
@@ -181,23 +187,25 @@
                 android:text="test timetable"
                 android:layout_below="@id/testscheduleTextview"
                 android:gravity="center"/>
-        </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="10">
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5">
             <ImageView
+                android:layout_marginTop="20dp"
                 android:id="@+id/testReport"
-                android:layout_width="110dp"
-                android:layout_centerInParent="true"
+                android:layout_width="60dp"
+                android:layout_gravity="center"
                 android:onClick="getTestReport"
-                android:layout_height="100dp"
-                android:padding="20dp"
+                android:layout_height="60dp"
+                android:scaleType="fitXY"
                 android:src="@drawable/ic_testreport"/>
             <TextView
                 android:layout_width="match_parent"
@@ -216,18 +224,20 @@
                 android:text="test report"
                 android:layout_below="@id/testReportTV"
                 android:gravity="center"/>
-        </RelativeLayout>
-        <RelativeLayout
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
+            android:orientation="vertical"
             android:layout_height="wrap_content"
             android:layout_weight="5">
             <ImageView
                 android:id="@+id/studentProfile"
-                android:layout_centerInParent="true"
-                android:layout_width="150dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="60dp"
+                android:layout_gravity="center"
                 android:onClick="getStudentProfile"
-                android:padding="20dp"
-                android:layout_height="100dp"
+                android:scaleType="fitXY"
+                android:layout_height="60dp"
                 android:src="@drawable/ic_profile"/>
             <TextView
                 android:id="@+id/studentProfileTV"
@@ -245,6 +255,6 @@
                 android:text="student profile"
                 android:layout_below="@id/studentProfileTV"
                 android:gravity="center" />
-        </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

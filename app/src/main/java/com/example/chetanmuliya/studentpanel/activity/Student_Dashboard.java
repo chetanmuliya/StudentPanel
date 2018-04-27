@@ -60,6 +60,8 @@ public class Student_Dashboard extends AppCompatActivity {
     }
 
     public void getAnnouncements(View view) {
+        Intent intent=new Intent(Student_Dashboard.this,NoticeActivity.class);
+        startActivity(intent);
     }
 
     public void getTestSchedule(View view) {

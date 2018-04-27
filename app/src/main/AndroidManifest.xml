@@ -26,8 +26,13 @@
             android:parentActivityName=".activity.Profile_Student" />
         <activity android:name=".activity.Student_Dashboard" />
         <activity android:name=".activity.AttendanceActivity" />
-        <activity android:name=".activity.DetailAttendanceActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.Dialog"></activity>
+        <activity
+            android:name=".activity.DetailAttendanceActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
+        <activity
+            android:name=".activity.NoticeActivity"
+            android:parentActivityName=".activity.Student_Dashboard" />
+        <activity android:name=".activity.TimeTableActivity"></activity>
     </application>
 
 </manifest>

@@ -26,6 +26,7 @@ public interface ApiInterface {
     @POST("detail_attendance_record.php")
     Call<List<DetailAttendanceData>> getDetailAttendanceMonth(@Field("batch") String batch, @Field("username") String username,  @Field("my") String my);
 
+    @FormUrlEncoded
     @POST("time_table_panel.php")
     Call<TimeTableModel> getTimeTable(@Field("batch") String batch);
 

@@ -13,26 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity" />
+
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".activity.Profile_Student" />
-        <activity
-            android:name=".activity.CoursesDetails"
-            android:parentActivityName=".activity.Profile_Student" />
+        <activity android:name=".activity.CoursesDetails" android:parentActivityName=".activity.Profile_Student" />
         <activity android:name=".activity.Student_Dashboard" />
         <activity android:name=".activity.AttendanceActivity" />
-        <activity
-            android:name=".activity.DetailAttendanceActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
-        <activity
-            android:name=".activity.NoticeActivity"
-            android:parentActivityName=".activity.Student_Dashboard" />
-        <activity android:name=".activity.TimeTableActivity"></activity>
+        <activity android:name=".activity.DetailAttendanceActivity" android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
+        <activity android:name=".activity.NoticeActivity" android:parentActivityName=".activity.Student_Dashboard" />
+        <activity android:name=".activity.TimeTableActivity" android:parentActivityName=".activity.Student_Dashboard"/>
+
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.example.chetanmuliya.studentpanel.R;
+import com.example.chetanmuliya.studentpanel.adapter.SelectCourseAdapter;
 import com.example.chetanmuliya.studentpanel.app.AppController;
 import com.example.chetanmuliya.studentpanel.helper.SQLiteLoginHandler;
 import com.example.chetanmuliya.studentpanel.helper.SessionManager;
@@ -70,6 +71,8 @@ public class Student_Dashboard extends AppCompatActivity {
     }
 
     public void getTestReport(View view) {
+        Intent intent=new Intent(Student_Dashboard.this,SelectCourseDailogActivity.class);
+        startActivity(intent);
     }
 
     public void getStudentProfile(View view) {

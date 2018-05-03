@@ -24,6 +24,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
     String[] courseName;
     String[] batch;
     String status;
+
     public CourseAdapter(String[] courseName,String status,String[] batch) {
         this.courseName=courseName;
         this.status=status;

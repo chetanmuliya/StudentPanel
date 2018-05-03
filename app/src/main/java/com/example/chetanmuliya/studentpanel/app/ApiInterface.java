@@ -3,6 +3,7 @@ package com.example.chetanmuliya.studentpanel.app;
 import com.example.chetanmuliya.studentpanel.model.AttendanceMonth;
 import com.example.chetanmuliya.studentpanel.model.DetailAttendanceData;
 import com.example.chetanmuliya.studentpanel.model.NoticeModel;
+import com.example.chetanmuliya.studentpanel.model.TestRecord;
 import com.example.chetanmuliya.studentpanel.model.TimeTableModel;
 
 import java.util.List;
@@ -33,4 +34,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("notice_detail.php")
     Call<List<NoticeModel>> getNotice(@Field("username") String username);
+
+    @FormUrlEncoded
+    @POST("student_test_record.php")
+    Call<List<TestRecord>> getTestRecord(@Field("username") String username,@Field("batch") String batch);
 }

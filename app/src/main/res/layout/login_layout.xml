@@ -2,8 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/bg_login"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp">
@@ -20,11 +18,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="60dp"
-            android:background="@drawable/logotext_0001_testune"/>
+            android:src="@drawable/logodomaine"/>
         <android.support.design.widget.TextInputLayout
             android:id="@+id/loginEmailLayout"
             android:layout_width="match_parent"
+            android:background="@drawable/profile_background"
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/email"
@@ -32,6 +30,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_email"
                 android:inputType="textEmailAddress"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:padding="10dp"
                 android:singleLine="true"
                 android:textColor="@color/white"
@@ -40,10 +40,14 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/loginPasswordLayout"
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/profile_background"
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/password"
                 android:layout_width="fill_parent"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_password"
                 android:inputType="textPassword"

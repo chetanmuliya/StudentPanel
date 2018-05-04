@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.chetanmuliya.studentpanel.R;
+import com.example.chetanmuliya.studentpanel.activity.AttendanceActivity;
 import com.example.chetanmuliya.studentpanel.activity.TestRecordActivity;
 
 import java.util.List;
@@ -22,10 +23,12 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
     String[] batchList ;
     String[] coursenameList ;
     Context ctx;
+    String status;
 
-    public SelectCourseAdapter(String[] batchList, String[] coursenameList, Context ctx ) {
+    public SelectCourseAdapter(String[] batchList, String status, String[] coursenameList, Context ctx ) {
         this.batchList = batchList;
         this.coursenameList = coursenameList;
+        this.status = status;
         this.ctx = ctx;
     }
 
@@ -39,14 +42,25 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
           holder.selectCourseView.setText(coursenameList[position]);
-          holder.selectCourseView.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  Intent intent = new Intent(v.getContext(), TestRecordActivity.class);
-                  intent.putExtra("selectedBatch",batchList[position]);
-                  v.getContext().startActivity(intent);
-              }
-          });
+          if(status.equals("reportcard")) {
+              holder.selectCourseView.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      Intent intent = new Intent(v.getContext(), TestRecordActivity.class);
+                      intent.putExtra("selectedBatch", batchList[position]);
+                      v.getContext().startActivity(intent);
+                  }
+              });
+          }else  if(status.equals("attendance")) {
+              holder.selectCourseView.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      Intent intent = new Intent(v.getContext(), AttendanceActivity.class);
+                      intent.putExtra("selectedBatch",batchList[position]);
+                      v.getContext().startActivity(intent);
+                  }
+              });
+          }
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.chetanmuliya.studentpanel.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,12 @@ public class TestRecordAdapter extends RecyclerView.Adapter<TestRecordAdapter.My
 
     List<TestRecord> testRecordList;
     TestRecord testRecordData;
+    Context ctx;
+
+    public TestRecordAdapter(List<TestRecord> testRecordList, Context c) {
+        this.testRecordList = testRecordList;
+        this.ctx=c;
+    }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

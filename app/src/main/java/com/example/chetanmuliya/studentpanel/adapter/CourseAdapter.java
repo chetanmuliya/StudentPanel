@@ -23,11 +23,9 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
 
     String[] courseName;
     String[] batch;
-    String status;
 
-    public CourseAdapter(String[] courseName,String status,String[] batch) {
+    public CourseAdapter(String[] courseName,String[] batch) {
         this.courseName=courseName;
-        this.status=status;
         this.batch=batch;
     }
 
@@ -42,17 +40,6 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         holder.courseNameTv.setText(courseName[position]);
-        if(status.equals("attendance")) {
-            holder.courseNameTv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent=new Intent(v.getContext(),AttendanceActivity.class);
-                    intent.putExtra("courseBatch",batch[position]);
-                    Log.d("***", "onClick: "+batch[position]);
-                    v.getContext().startActivity(intent);
-                }
-            });
-        }
     }
 
     @Override

@@ -23,7 +23,6 @@ public class CoursesDetails extends AppCompatActivity {
 
     RecyclerView recyclerView;
     CourseAdapter adapter;
-    String status;
     SessionManager session;
     String[] courseName;
     String[] batch;
@@ -34,17 +33,11 @@ public class CoursesDetails extends AppCompatActivity {
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             setSupportActionBar(toolbar);
+            toolbar.setTitle("Enrolled Courses");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
         }
-        if(getIntent()!=null) {
-            status = getIntent().getStringExtra("status");
-            if(status.equals("attendance")){
-                toolbar.setTitle("Attendance");
-            }else{
-                toolbar.setTitle("Courses");
-            }
-        }
+
         session=new SessionManager(getApplicationContext());
         int size=session.getSize();
         courseName=new String[size];
@@ -67,7 +60,7 @@ public class CoursesDetails extends AppCompatActivity {
         Log.e("*****", "onCreate: batch"+batch[1]);
 
 
-        adapter = new CourseAdapter(courseName,status,batch);
+        adapter = new CourseAdapter(courseName,batch);
         recyclerView=(RecyclerView)findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

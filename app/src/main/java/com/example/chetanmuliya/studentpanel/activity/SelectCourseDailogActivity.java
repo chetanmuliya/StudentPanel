@@ -17,6 +17,7 @@ public class SelectCourseDailogActivity extends AppCompatActivity {
     private SelectCourseAdapter adapter;
     private String[] courseName;
     private String[] batch;
+    private String status;
     private SessionManager session;
     private RecyclerView selectCourseList;
     @Override
@@ -26,7 +27,9 @@ public class SelectCourseDailogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_course_dailog);
 
         selectCourseList = (RecyclerView)findViewById(R.id.selectCourseList);
-
+      if(getIntent()!=null){
+          status =getIntent().getExtras().getString("status");
+      }
 
         session=new SessionManager(getApplicationContext());
         int size=session.getSize();
@@ -46,10 +49,9 @@ public class SelectCourseDailogActivity extends AppCompatActivity {
             batch[3] = session.getStudentCourses("batch4");
         }
 
-        adapter = new SelectCourseAdapter(batch,courseName,this);
+        adapter = new SelectCourseAdapter(batch,status,courseName,this);
         selectCourseList.setLayoutManager(new LinearLayoutManager(this));
         selectCourseList.setHasFixedSize(true);
         selectCourseList.setAdapter(adapter);
-
     }
 }

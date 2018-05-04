@@ -119,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                         String[] studentCourse=new String[course.length()];
                         String[] studentBatch=new String[course.length()];
                         session.setSize(course.length());
-                       // Set<String> courseSet=new HashSet<>();
+                       // Set<String> courseSet=logodomaine HashSet<>();
                         Map<String,String> courseMap=new HashMap<>();
                              for(int i=0;i<course.length();i++){
                                  JSONObject aObject=course.getJSONObject(i);

@@ -83,8 +83,12 @@ public class Profile_Student extends AppCompatActivity {
         finish();
     }
 
-    public void onCourses(View view) {
-        Intent intent=new Intent(Profile_Student.this,CoursesDetails.class);
-        startActivity(intent);
+    public void onBackPressed(View view) {
+        onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

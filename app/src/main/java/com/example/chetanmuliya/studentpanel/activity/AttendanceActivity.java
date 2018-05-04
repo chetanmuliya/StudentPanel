@@ -55,9 +55,9 @@ public class AttendanceActivity extends AppCompatActivity {
         db=new SQLiteLoginHandler(getApplicationContext());
         List<Student> studentList=db.getStudentdetails();
         if(getIntent()!=null){
-            batch=getIntent().getExtras().getString("courseBatch");
-            Log.e("****", "batch: "+batch );
+            batch=getIntent().getExtras().getString("selectedBatch");
         }
+
         username=studentList.get(0).getUsername();
         //progress dialog
         customProgressDialog=new CustomProgressDialog(this);

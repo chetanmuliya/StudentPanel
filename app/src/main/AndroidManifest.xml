@@ -37,7 +37,7 @@
             android:parentActivityName=".activity.Student_Dashboard" />
         <activity android:name=".activity.TestRecordActivity" />
         <activity android:name=".activity.SelectCourseDailogActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
+            android:theme="@style/selectCourseTheme" />
     </application>
 
 </manifest>

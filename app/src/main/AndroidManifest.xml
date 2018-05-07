@@ -33,6 +33,9 @@
             android:name=".activity.NoticeActivity"
             android:parentActivityName=".activity.Student_Dashboard" />
         <activity
+            android:name=".activity.ResetPasswordActivity"
+            android:parentActivityName=".activity.Profile_Student" />
+        <activity
             android:name=".activity.TimeTableActivity"
             android:parentActivityName=".activity.Student_Dashboard" />
         <activity android:name=".activity.TestRecordActivity" />

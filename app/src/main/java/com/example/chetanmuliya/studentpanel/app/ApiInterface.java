@@ -3,6 +3,7 @@ package com.example.chetanmuliya.studentpanel.app;
 import com.example.chetanmuliya.studentpanel.model.AttendanceMonth;
 import com.example.chetanmuliya.studentpanel.model.DetailAttendanceData;
 import com.example.chetanmuliya.studentpanel.model.NoticeModel;
+import com.example.chetanmuliya.studentpanel.model.PasswordStatusModel;
 import com.example.chetanmuliya.studentpanel.model.TestRecord;
 import com.example.chetanmuliya.studentpanel.model.TimeTableModel;
 
@@ -38,4 +39,9 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("student_test_record.php")
     Call<List<TestRecord>> getTestRecord(@Field("username") String username,@Field("batch") String batch);
+
+    @FormUrlEncoded
+    @POST("change_password.php")
+    Call<List<PasswordStatusModel>> changePassword(@Field("username") String username, @Field("new_password") String newPassword, @Field("old_password") String oldPassword, @Field("confirm_password") String confirmPassword);
+
 }

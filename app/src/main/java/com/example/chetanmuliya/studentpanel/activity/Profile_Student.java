@@ -91,4 +91,9 @@ public class Profile_Student extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
+
+    public void changePassword(View view) {
+        Intent intent=new Intent(Profile_Student.this,ResetPasswordActivity.class);
+        startActivity(intent);
+    }
 }

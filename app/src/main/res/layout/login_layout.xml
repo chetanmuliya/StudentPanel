@@ -2,46 +2,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:orientation="vertical"
+        android:layout_marginTop="30dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
             android:layout_gravity="center"
-            android:src="@drawable/logodomaine"/>
+            android:src="@drawable/ic_domain"/>
         <android.support.design.widget.TextInputLayout
             android:id="@+id/loginEmailLayout"
             android:layout_width="match_parent"
-            android:background="@drawable/profile_background"
+            android:layout_marginTop="80dp"
+            android:padding="5dp"
+            android:hint="username"
+            android:background="@drawable/logintestboxbg"
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/email"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_email"
                 android:inputType="textEmailAddress"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
                 android:padding="10dp"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:id="@+id/loginPasswordLayout"
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/profile_background"
+            android:layout_marginTop="18dp"
+            android:hint="password"
+            android:padding="5dp"
+            android:background="@drawable/logintestboxbg"
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/password"
@@ -49,11 +53,10 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_password"
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="@color/white"/>
         </android.support.design.widget.TextInputLayout>
         <!-- Login Button -->
@@ -62,14 +65,22 @@
             android:id="@+id/btnLogin"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@color/btn_login_bg"
-            android:text="@string/btn_login"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/profile_background"
+            android:elevation="5dp"
             android:onClick="onLogin"
-            android:textColor="@color/btn_login" />
+            android:layout_marginBottom="5dp"
+            android:text="@string/btn_login"
+            android:textColor="@color/white" />
 
         <!-- Link to Login Screen -->
-
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:textColor="@color/black"
+             android:gravity="center"
+             android:text="*if you dont have a login credentials
+kindle inform to respective class lecturer"/>
 
     </LinearLayout>
 

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
-            android:background="@color/black"
+            android:background="@drawable/backgroundstudent"
             android:layout_width="match_parent"
             android:layout_height="280dp">
         <ImageView
@@ -102,7 +102,7 @@
                         <ImageView
                             android:layout_width="36dp"
                             android:layout_height="36dp"
-                            android:tint="@color/bg_login"
+                            android:tint="@color/black"
                             android:src="@drawable/ic_email_black_24dp"
                             android:layout_marginRight="10dp"/>
                              <TextView
@@ -122,7 +122,7 @@
                             <ImageView
                             android:layout_width="36dp"
                             android:layout_height="36dp"
-                                android:tint="@color/bg_login"
+                                android:tint="@color/black"
                             android:src="@drawable/ic_phone_iphone_black_24dp"
                             android:layout_marginRight="10dp"/>
                            <TextView
@@ -142,7 +142,7 @@
                             <ImageView
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
-                                android:tint="@color/bg_login"
+                                android:tint="@color/black"
                                 android:src="@drawable/ic_username"
                                 android:layout_marginRight="10dp"/>
                             <TextView
@@ -157,7 +157,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="change password"
                                 android:onClick="changePassword"
-                                android:textColor="@color/btn_login"
+                                android:textColor="@color/black"
                                 android:layout_gravity="center_vertical"
                                 android:gravity="end"/>
                         </LinearLayout>
@@ -171,7 +171,7 @@
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
                                 android:src="@drawable/ic_school"
-                                android:tint="@color/bg_login"
+                                android:tint="@color/black"
                                 android:layout_marginRight="10dp"/>
                             <TextView
                                 android:id="@+id/student_SchoolName"
@@ -191,7 +191,7 @@
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
                                 android:src="@drawable/ic_joiningdate"
-                                android:tint="@color/bg_login"
+                                android:tint="@color/black"
                                 android:layout_marginRight="10dp"/>
                             <TextView
                                 android:id="@+id/student_JoiningDate"

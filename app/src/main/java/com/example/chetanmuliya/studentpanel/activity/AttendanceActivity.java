@@ -79,19 +79,25 @@ public class AttendanceActivity extends AppCompatActivity {
            @Override
            public void onResponse(Call<List<AttendanceMonth>> call, Response<List<AttendanceMonth>> response) {
                customProgressDialog.hideProgressDialog();
-               attendanceMonthList = response.body();
-               adapter = new AttendanceMonthAdapter(attendanceMonthList, ctx, new CustomOnCLickListener() {
-                   @Override
-                   public void onCLick(View v, int position) {
-                       Intent intent=new Intent(v.getContext(),DetailAttendanceActivity.class);
-                       intent.putExtra("my",attendanceMonthList.get(position).getMonth());
-                       intent.putExtra("username",username);
-                       intent.putExtra("batch",batch);
-                       startActivity(intent);
-                   }
-               });
-               attendanceRVList.setAdapter(adapter);
-               Log.e("****", "onResponse: "+new Gson().toJson(response));
+               if(response == null){
+                   Toast.makeText(getApplicationContext(),"No Attendance Record",Toast.LENGTH_LONG).show();
+                   finish();
+                   return;
+               }else {
+                   attendanceMonthList = response.body();
+                   adapter = new AttendanceMonthAdapter(attendanceMonthList, ctx, new CustomOnCLickListener() {
+                       @Override
+                       public void onCLick(View v, int position) {
+                           Intent intent = new Intent(v.getContext(), DetailAttendanceActivity.class);
+                           intent.putExtra("my", attendanceMonthList.get(position).getMonth());
+                           intent.putExtra("username", username);
+                           intent.putExtra("batch", batch);
+                           startActivity(intent);
+                       }
+                   });
+                   attendanceRVList.setAdapter(adapter);
+                   Log.e("****", "onResponse: " + new Gson().toJson(response));
+               }
            }
 
            @Override

@@ -30,7 +30,6 @@ public class SelectCourseDailogActivity extends AppCompatActivity {
       if(getIntent()!=null){
           status =getIntent().getExtras().getString("status");
       }
-
         session=new SessionManager(getApplicationContext());
         int size=session.getSize();
         courseName=new String[size];

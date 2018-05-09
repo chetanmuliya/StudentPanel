@@ -121,72 +121,80 @@
                 android:gravity="center"/>
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="10">
+
         <LinearLayout
             android:layout_width="0dp"
-            android:orientation="vertical"
             android:layout_height="wrap_content"
-            android:layout_weight="5">
+            android:layout_weight="5"
+            android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/annoucementLogo"
                 android:layout_width="60dp"
-                android:layout_marginTop="20dp"
                 android:layout_height="60dp"
-                android:scaleType="fitXY"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:onClick="getAnnouncements"
+                android:scaleType="fitXY"
                 android:src="@drawable/ic_announcement" />
+
             <TextView
-                android:layout_width="match_parent"
                 android:id="@+id/annoucementTextview"
-                android:gravity="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Announcement"
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
                 android:layout_below="@id/annoucementLogo"
-                />
+                android:gravity="center"
+                android:text="Announcement"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="notice"
                 android:layout_below="@id/annoucementTextview"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:text="notice" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
-            android:orientation="vertical"
             android:layout_height="wrap_content"
-            android:layout_weight="5">
+            android:layout_weight="5"
+            android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/testscheduleLogo"
-                android:layout_marginTop="20dp"
                 android:layout_width="60dp"
-                android:scaleType="fitXY"
-                android:layout_gravity="center"
-                android:onClick="getTestSchedule"
                 android:layout_height="60dp"
-                android:src="@drawable/ic_testschedule"/>
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:onClick="getTestSchedule"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_testschedule" />
+
             <TextView
                 android:id="@+id/testscheduleTextview"
                 android:layout_width="match_parent"
-                android:gravity="center"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/testscheduleLogo"
+                android:gravity="center"
+                android:text="Time Table/Test Schedule"
                 android:textColor="@android:color/black"
-                android:textStyle="bold"
                 android:textSize="18sp"
-                android:text="Test Schedule"
-                android:layout_below="@id/testscheduleLogo" />
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="test timetable"
                 android:layout_below="@id/testscheduleTextview"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:text="test timetable" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

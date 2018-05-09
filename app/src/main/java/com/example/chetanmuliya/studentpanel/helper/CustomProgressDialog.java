@@ -15,6 +15,7 @@ public  class CustomProgressDialog {
     public CustomProgressDialog(Context ctx) {
         this.c = ctx;
         progressDialog=new ProgressDialog(ctx);
+        progressDialog.setCanceledOnTouchOutside(false);
     }
 
     public  static void  showProgressDialog(){

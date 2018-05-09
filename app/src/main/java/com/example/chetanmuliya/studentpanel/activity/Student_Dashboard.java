@@ -65,7 +65,7 @@ public class Student_Dashboard extends AppCompatActivity {
     }
 
     public void getTestSchedule(View view) {
-        Intent intent=new Intent(Student_Dashboard.this,TimeTableActivity.class);
+        Intent intent=new Intent(Student_Dashboard.this,TestScheduleActivity.class);
         startActivity(intent);
     }
 

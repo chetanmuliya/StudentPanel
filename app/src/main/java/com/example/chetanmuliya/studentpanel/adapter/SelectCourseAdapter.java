@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.chetanmuliya.studentpanel.R;
 import com.example.chetanmuliya.studentpanel.activity.AttendanceActivity;
 import com.example.chetanmuliya.studentpanel.activity.TestRecordActivity;
+import com.example.chetanmuliya.studentpanel.activity.TimeTableActivity;
 
 import java.util.List;
 
@@ -60,6 +61,26 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
                       v.getContext().startActivity(intent);
                   }
               });
+          }else  if(status.equals("timetable")) {
+              holder.selectCourseView.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      Intent intent = new Intent(v.getContext(), TimeTableActivity.class);
+                      intent.putExtra("selectedBatch",batchList[position]);
+                      intent.putExtra("onSelect","timetable");
+                      v.getContext().startActivity(intent);
+                  }
+              });
+          }else  if(status.equals("testschedule")) {
+              holder.selectCourseView.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      Intent intent = new Intent(v.getContext(), TimeTableActivity.class);
+                      intent.putExtra("selectedBatch",batchList[position]);
+                      intent.putExtra("onSelect","testschedule");
+                      v.getContext().startActivity(intent);
+                  }
+              });
           }
     }
 
@@ -73,7 +94,6 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
         TextView selectCourseView;
         public MyViewHolder(View itemView) {
             super(itemView);
-
             selectCourseView = (TextView)itemView.findViewById(R.id.selectCourseName);
         }
 

@@ -37,6 +37,10 @@ public interface ApiInterface {
     Call<List<NoticeModel>> getNotice(@Field("username") String username);
 
     @FormUrlEncoded
+    @POST("student_test_schedule.php")
+    Call<TimeTableModel> getTestSchedule(@Field("batch") String batch);
+
+    @FormUrlEncoded
     @POST("student_test_record.php")
     Call<List<TestRecord>> getTestRecord(@Field("username") String username,@Field("batch") String batch);
 

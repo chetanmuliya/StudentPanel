@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.chetanmuliya.studentpanel.R;
 import com.example.chetanmuliya.studentpanel.adapter.TestRecordAdapter;
@@ -55,11 +56,17 @@ public class TestRecordActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<TestRecord>>() {
             @Override
             public void onResponse(Call<List<TestRecord>> call, Response<List<TestRecord>> response) {
-                Log.d("******", "onResponse: "+new Gson().toJson(response));
-                testRecordList = response.body();
-                adapter = new TestRecordAdapter(testRecordList,getApplicationContext());
-                testRecordRV.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
+                if(response == null){
+                    Toast.makeText(getApplicationContext(),"No Test Record",Toast.LENGTH_LONG).show();
+                    finish();
+                    return;
+                }else {
+                    Log.d("******", "onResponse: " + new Gson().toJson(response));
+                    testRecordList = response.body();
+                    adapter = new TestRecordAdapter(testRecordList, getApplicationContext());
+                    testRecordRV.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                }
             }
 
             @Override

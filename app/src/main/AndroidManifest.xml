@@ -39,8 +39,12 @@
             android:name=".activity.TimeTableActivity"
             android:parentActivityName=".activity.Student_Dashboard" />
         <activity android:name=".activity.TestRecordActivity" />
-        <activity android:name=".activity.SelectCourseDailogActivity"
+        <activity
+            android:name=".activity.SelectCourseDailogActivity"
             android:theme="@style/selectCourseTheme" />
+        <activity
+            android:name=".activity.TestScheduleActivity"
+            android:theme="@style/selectCourseTheme"/>
     </application>
 
 </manifest>

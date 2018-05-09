@@ -27,40 +27,34 @@ import retrofit2.Response;
 public class TimeTableActivity extends AppCompatActivity {
 
     private WebView webView;
+    private String onSelect;
+    private String batch;
     private CustomProgressDialog customProgressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_table);
         customProgressDialog = new CustomProgressDialog(this);
-
+          if(getIntent()!=null){
+              onSelect=getIntent().getStringExtra("onSelect");
+              batch=getIntent().getStringExtra("selectedBatch");
+          }
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        toolbar.setTitle("Time Table");
+        if(onSelect.equals("timetable")) {
+            toolbar.setTitle("Time Table");
+        }else {
+            toolbar.setTitle("Test Schedule");
+        }
         webView=(WebView)findViewById(R.id.webview);
-
-
         getWindow().setFeatureInt(Window.FEATURE_PROGRESS,Window.PROGRESS_VISIBILITY_ON);
-        webView.setWebChromeClient(new WebChromeClient(){
-            @Override
-            public void onProgressChanged(WebView view, int progress) {
-                setTitle("Loading...");
-                setProgress(progress * 100); //Make the bar disappear after URL is loaded
-
-                // Return the app name after finish loading
-                if(progress == 100)
-                    customProgressDialog.hideProgressDialog();
-                setTitle(R.string.app_name);
-            }
-        });
-
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().getDisplayZoomControls();
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
-        //webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         webView.setScrollbarFadingEnabled(false);
         webView.setWebViewClient(new WebViewClient());
 
@@ -71,32 +65,57 @@ public class TimeTableActivity extends AppCompatActivity {
         CustomProgressDialog.addMessage("Loading... timetable");
         CustomProgressDialog.showProgressDialog();
         ApiInterface apiInterface= ApiClient.getClient().create((ApiInterface.class));
-        Call<TimeTableModel> testRequestStatusCall=apiInterface.getTimeTable("Kota01-01m12m-01");
-        testRequestStatusCall.enqueue(new Callback<TimeTableModel>() {
-            @Override
-            public void onResponse(Call<TimeTableModel> call, Response<TimeTableModel> response) {
-                Display display = getWindowManager().getDefaultDisplay();
-                int width=display.getWidth();
+        Call<TimeTableModel> testRequestStatusCall = null;
+        Call<TimeTableModel> testSheduleCall = null;
+        if(onSelect.equals("timetable")) {
+            Log.d("********", "timetable: "+batch);
+             testRequestStatusCall = apiInterface.getTimeTable(batch);
+            testRequestStatusCall.enqueue(new Callback<TimeTableModel>() {
+                @Override
+                public void onResponse(Call<TimeTableModel> call, final Response<TimeTableModel> response) {
 
-                //String data="<html><head><title>Example</title><meta name=\"viewport\"\"content=\"width="+width+", initial-scale=0.65 \" /></head>";
-                //data=data+"<body><center><a href =\""+response.body().getUrl()+"\" /></a></center></body></html>";
-                //webView.loadData(data, "text/html", null);
-                webView.loadUrl(response.body().getUrl());
-                //webView.loadDataWithBaseURL(null, "<style>img{display: inline;height: auto;max-width: 100%;}</style>" + response.body().getUrl(), "text/html", "UTF-8", null);
-                if (response == null) {
-                    Toast.makeText(getApplicationContext(), "Couldn't fetch the data! Please try again.", Toast.LENGTH_LONG).show();
-                    return;
+                    if (response == null) {
+                        Toast.makeText(getApplicationContext(), "Couldn't fetch the data! Please try again.", Toast.LENGTH_LONG).show();
+                        finish();
+                        return;
+                    }else {
+                        webView.loadUrl(response.body().getUrl());
+                        customProgressDialog.hideProgressDialog();
+                    }
+                    Log.d("retrofit", "onResponse: "+ new Gson().toJson(response.body()));
                 }
 
-                customProgressDialog.hideProgressDialog();
-                Log.d("retrofit", "onResponse: "+ new Gson().toJson(response.body()));
-            }
+                @Override
+                public void onFailure(Call<TimeTableModel> call, Throwable t) {
+                    customProgressDialog.hideProgressDialog();
+                    Log.d("response error ", "onFailure: "+t.toString());
+                }
+            });
+        }else if(onSelect.equals("testschedule")){
+            Log.d("********", "test schedule: "+batch);
+            testSheduleCall = apiInterface.getTestSchedule(batch);
+            testSheduleCall.enqueue(new Callback<TimeTableModel>() {
+                @Override
+                public void onResponse(Call<TimeTableModel> call, Response<TimeTableModel> response) {
+                    webView.loadUrl(response.body().getUrl());
+                    if (response == null) {
+                        Toast.makeText(getApplicationContext(), "Couldn't fetch the data! Please try again.", Toast.LENGTH_LONG).show();
+                        finish();
+                        return;
+                    }else {
+                        webView.loadUrl(response.body().getUrl());
+                        customProgressDialog.hideProgressDialog();
+                    }
+                    Log.d("retrofit", "onResponse: "+ new Gson().toJson(response.body()));
+                }
 
-            @Override
-            public void onFailure(Call<TimeTableModel> call, Throwable t) {
-                customProgressDialog.hideProgressDialog();
-                Log.d("response error ", "onFailure: "+t.toString());
-            }
-        });
+                @Override
+                public void onFailure(Call<TimeTableModel> call, Throwable t) {
+                    customProgressDialog.hideProgressDialog();
+                    Log.d("response error ", "onFailure: "+t.toString());
+                }
+            });
+        }
+
     }
 }

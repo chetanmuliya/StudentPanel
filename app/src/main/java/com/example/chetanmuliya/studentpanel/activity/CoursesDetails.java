@@ -59,7 +59,6 @@ public class CoursesDetails extends AppCompatActivity {
         Log.d("*****", "onCreate: courseName"+courseName[0]);
         Log.e("*****", "onCreate: batch"+batch[1]);
 
-
         adapter = new CourseAdapter(courseName,batch);
         recyclerView=(RecyclerView)findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
